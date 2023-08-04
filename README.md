@@ -1,8 +1,8 @@
 # Proyecto Final Coder House - Python
 #### Comisión: 54955
 #### Alumnos:
-Leandro Dramis
-Juan Pablo Apecetche
+#Leandro Dramis
+#Juan Pablo Apecetche
 
 ## Nombre del Proyecto
 Argentravel
