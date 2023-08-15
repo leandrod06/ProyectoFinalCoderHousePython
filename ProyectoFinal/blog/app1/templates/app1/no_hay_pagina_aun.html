@@ -24,9 +24,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'provincias' %}">Provincias</a>
-                <a class="navbar-brand" href="{% url 'viajes' %}">Viajes</a>
-                <a class="navbar-brand" href="{% url 'excursiones' %}">Excursiones</a>
-                <a class="navbar-brand" href="{% url 'gastronomia' %}">Gastronomia</a>
+                <a class="navbar-brand" href="{% url 'opiniones' %}">Opiniones</a>
                 <a class="btn btn-primary" href="{% url 'registro' %}">Sign Up</a>
                 <a class="btn btn-primary" href="{% url 'perfil' %}">Perfil</a>
             </div>
@@ -65,13 +63,13 @@
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-twitter fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>

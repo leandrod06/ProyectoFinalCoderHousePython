@@ -3,6 +3,20 @@
     <head>
 
         {% load static %}
+        <style>
+            .avatar-container {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        overflow: hidden;
+        }
+
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        </style>
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,13 +36,26 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
+
+                {% if request.user.is_authenticated %}
+                {% if request.user.avatar_set.first %}
+                    <div class="avatar-container">
+                        <img src="{{ request.user.avatar_set.first.imagen.url }}" class="avatar-image" />
+                    </div>
+                {% endif %}
+                <p class="text-muted small mb-4 mb-lg-0">{{ request.user.username }}</p>
+                {% endif %}
+
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'provincias' %}">Provincias</a>
-                <a class="navbar-brand" href="{% url 'viajes' %}">Viajes</a>
-                <a class="navbar-brand" href="{% url 'excursiones' %}">Excursiones</a>
-                <a class="navbar-brand" href="{% url 'gastronomia' %}">Gastronomia</a>
-                <a class="btn btn-primary" href="{% url 'registro' %}">Sign Up</a>
-                <a class="btn btn-primary" href="{% url 'login' %}">Log in</a>
+                <a class="navbar-brand" href="{% url 'opiniones' %}">Opiniones</a>
+                {% if not request.user.is_authenticated %}
+                    <a class="btn btn-primary" href="{% url 'registro' %}">Sign Up</a>
+                    <a class="btn btn-primary" href="{% url 'login' %}">Log In</a>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'perfil' %}">Perfil</a>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->
@@ -54,8 +81,8 @@
                             <img class="img-fluid rounded-circle mb-3" src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/Q65VXWNN2FEVNN4QOLAKSC7J5E.jpg" alt="..." />
                             <h3>Buenos Aires</h3>
                             
-                            <p class="lead mb-0">Buenos Aires tiene multiples destinos turisticas para vos.<br></br>
-                            <a href="{% url 'buenos_aires' %}">+Info</a><br></br>
+                            <p class="lead mb-0">Conoce sus distintos puntos turisticos llenos de historia.<br></br>
+                            <a href="{% url 'opiniones' %}">+Info</a><br></br>
                             </p>
                         </div>
                     </div>
@@ -64,7 +91,7 @@
                             <img class="img-fluid rounded-circle mb-3" src="https://i0.wp.com/diariosanrafael.com.ar/wp-content/uploads/2022/07/turismo-mendoza.jpg?fit=1600%2C1067&ssl=1" alt="..." />
                             <h3>Mendoza</h3>
                             <p class="lead mb-0">Montañas, lagos, ríos y un buen vino te esperan en Mendoza.<br></br>
-                            <a href="{% url 'mendoza' %}">+Info</a><br></br>
+                            <a href="{% url 'opiniones' %}">+Info</a><br></br>
                             </p>
                         </div>
                     </div>
@@ -73,7 +100,7 @@
                             <img class="img-fluid rounded-circle mb-3" src="https://www.tiempoar.com.ar/wp-content/uploads/2022/07/web-ski-catedrAL.jpg" alt="..." />
                             <h3>Río Negro</h3>
                             <p class="lead mb-0">Lagos, montañas, nieve, reservas naturales. Todo junto en Río Negro.<br></br>
-                            <a href="{% url 'rio_negro' %}">+Info</a><br></br>
+                            <a href="{% url 'opiniones' %}">+Info</a><br></br>
                             </p>
                         </div>
                     </div>
@@ -90,7 +117,8 @@
                         <div class="features-icons-item mx-auto mb-0 mb-lg-3">
                             <img class="img-fluid rounded-circle mb-3" src="https://upload.wikimedia.org/wikipedia/commons/9/97/Foz_de_Igua%C3%A7u_27_Panorama_Nov_2005.jpg" alt="..." />
                             <h3>Misiones</h3>
-                            <p class="lead mb-0">La garganta del diablo te espera en Misiones.<br></br>+Info</p>
+                            <p class="lead mb-0">La garganta del diablo te espera en Misiones.<br></br>
+                            <a href="{% url 'no_hay_pagina_aun' %}">+Info</a><br></br>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -153,13 +181,13 @@
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-twitter fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>

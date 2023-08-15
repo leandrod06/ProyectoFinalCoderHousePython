@@ -3,7 +3,20 @@
     <head>
 
         {% load static %}
+        <style>
+            .avatar-container {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        overflow: hidden;
+        }
 
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        </style>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -22,13 +35,27 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
+
+                {% if request.user.is_authenticated %}
+                {% if request.user.avatar_set.first %}
+                    <div class="avatar-container">
+                        <img src="{{ request.user.avatar_set.first.imagen.url }}" class="avatar-image" />
+                    </div>
+                {% endif %}
+                <p class="text-muted small mb-4 mb-lg-0">{{ request.user.username }}</p>
+                {% endif %}
+
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'provincias' %}">Provincias</a>
-                <a class="navbar-brand" href="{% url 'viajes' %}">Viajes</a>
-                <a class="navbar-brand" href="{% url 'excursiones' %}">Excursiones</a>
-                <a class="navbar-brand" href="{% url 'gastronomia' %}">Gastronomia</a>
-                <a class="btn btn-primary" href="{% url 'registro' %}">Sign Up</a>
-                <a class="btn btn-primary" href="{% url 'perfil' %}">Perfil</a>
+                <a class="navbar-brand" href="{% url 'opiniones' %}">Opiniones</a>
+  
+                {% if not request.user.is_authenticated %}
+                    <a class="btn btn-primary" href="{% url 'registro' %}">Sign Up</a>
+                    <a class="btn btn-primary" href="{% url 'login' %}">Log In</a>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'perfil' %}">Perfil</a>
+                    <a class="btn btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->
@@ -83,13 +110,13 @@
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-twitter fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>

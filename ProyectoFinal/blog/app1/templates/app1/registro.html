@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
 
         {% load static %}
@@ -24,31 +24,21 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'provincias' %}">Provincias</a>
-                <a class="navbar-brand" href="{% url 'viajes' %}">Viajes</a>
-                <a class="navbar-brand" href="{% url 'excursiones' %}">Excursiones</a>
-                <a class="navbar-brand" href="{% url 'gastronomia' %}">Gastronomia</a>
+                <a class="navbar-brand" href="{% url 'opiniones' %}">Opiniones</a>
                 <a class="btn btn-primary" href="{% url 'registro' %}">Sign Up</a>
                 <a class="btn btn-primary" href="{% url 'login' %}">Log in</a>
             </div>
         </nav>
         <!-- Masthead-->
-        <!-- Formulario de registro -->
 
-        {% block contenidoQueCambia %}
-
-            {% if miFormulario.errors %}
-                <p style="color: red;"> Estan mal los datos, revisar </p>
-            {% endif %}
-
-            <form action="" method="POST"> {% csrf_token%}
-                <table>
-                    {{ miFormulario.as_table }}
-                </table>
-            <input type="submit", value="Enviar">
+            <form action="" method="POST"> 
+                {% csrf_token%}
+                {{ form.as_p }}
+            
+            <input type="submit", value="Registrar">
         
             </form>
-   
-        {% endblock %}
+
 
         <!-- Footer-->
         <footer class="footer bg-light">

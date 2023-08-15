@@ -3,7 +3,20 @@
     <head>
 
         {% load static %}
+        <style>
+            .avatar-container {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        overflow: hidden;
+        }
 
+        .avatar-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        </style>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -24,9 +37,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'provincias' %}">Provincias</a>
-                <a class="navbar-brand" href="{% url 'viajes' %}">Viajes</a>
-                <a class="navbar-brand" href="{% url 'excursiones' %}">Excursiones</a>
-                <a class="navbar-brand" href="{% url 'gastronomia' %}">Gastronomia</a>
+                <a class="navbar-brand" href="{% url 'opiniones' %}">Opiniones</a>
                 <a class="btn btn-primary" href="{% url 'inicio' %}">Log Out</a>
             </div>
         </nav>
@@ -46,17 +57,23 @@
         </header>
         <!-- Icons Grid-->
         <section class="features-icons bg-light text-center">
+
             <h1>Editar Perfil</h1>
-            <form method="post">
+            <h1>De {{usuario}}</h1>
+
+            <form action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ miFormulario.as_p }}
                 <button type="submit">Guardar Cambios</button>
             </form>
         </section>
 
-        {% block contenidoQueCambia %}
-        
-        {% endblock %}
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <a class="btn btn-primary" href="{% url 'eliminarCuenta' %}">ELIMINAR CUENTA</a>
+        </div>
 
         <!-- Footer-->
         <footer class="footer bg-light">
@@ -77,13 +94,13 @@
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-twitter fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="{% url 'no_hay_pagina_aun' %}"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>
